@@ -1,7 +1,7 @@
 /* global describe, it, before */
 
 import chai from 'chai';
-import Typewriter from '../lib/Typewriter.js';
+import Typewriter from '../lib/twjs.js';
 
 chai.expect();
 

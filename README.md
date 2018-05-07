@@ -4,19 +4,19 @@ A better typewritter effect.
 ## Install
 * In-browser installization
 ```html
-<script src="/path/to/Typewriter.min.js"></script>
+<script src="/path/to/twjs.min.js"></script>
 ```
 * Install with yarn or npm
 ```
-npm install Typewriter
+npm install twjs
 ```
 Then, 
 ```js
-import Typewriter from 'Typewriter';
+import Typewriter from 'twjs';
 ```
 or
 ```js
-var Typewriter = require('Typewriter');
+var Typewriter = require('twjs');
 ```
 
 ## Usage

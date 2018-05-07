@@ -1,8 +1,8 @@
 {
-  "name": "Typewriter",
+  "name": "twjs",
   "version": "1.0.0",
   "description": "Better typewriter effect",
-  "main": "lib/Typewriter.js",
+  "main": "lib/twjs.js",
   "scripts": {
     "build": "webpack --env dev && webpack --env build && npm run test",
     "dev": "webpack --progress --colors --watch --env dev",
