@@ -25,9 +25,8 @@ var Typewriter = require('twjs');
 var config = {
   interval: 30,                       // * Time interval for the animation, 30 by
                                       // default
-  skipMathJax: true,                  // * Whether to skip Math formulas so that
+  skip: '.MathJax',                   // * Specify a selector to skip. We let 
                                       // the formulas shows entirely
-  mathShock: 0,                       // * Wait x ticks after a formula is shown;
                                       // invalid when skipMathJax is false
   hook: function(operation, queue) {  // * For advanced usage of the library;
     return true;                      // return false to skip default process of

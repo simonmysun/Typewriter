@@ -3,8 +3,7 @@ const Typewriter = function (srcElement, cfg) {
   let timeIntervalHandler = null;
   const defaultConfig = {
     interval: 30,
-    skipMathJax: true,
-    mathShock: 0,
+    skip: ':not(*)',
     hook(x, queue) {
       return true;
     }
@@ -21,21 +20,11 @@ const Typewriter = function (srcElement, cfg) {
   let targetNode = newElement.firstChild;
 
   while (true) {
-    if (self.config.skipMathJax &&
-        travelNode.nodeType === 1 &&
-        travelNode.className.indexOf('MathJax') !== -1) {
+    if (travelNode.nodeType === 1 && travelNode.matches(self.config.skip)) {
       self.processQueue.push({
         type: 'Node',
         data: travelNode.cloneNode(true)
       });
-      if (travelNode.className.indexOf('MathJax_Preview') === -1) {
-        for (let i = 0; i < self.config.mathShock; i += 1) {
-          self.processQueue.push({
-            type: 'Wait',
-            data: null
-          });
-        }
-      }
     } else {
       self.processQueue.push({
         type: 'Node',
@@ -44,8 +33,7 @@ const Typewriter = function (srcElement, cfg) {
     }
 
     if (travelNode.childNodes.length > 0 &&
-        (!self.config.skipMathJax ||
-         travelNode.className.indexOf('MathJax') === -1)) {
+        !travelNode.matches(self.config.skip)) {
       self.processQueue.push({
         type: 'Operation',
         data: 'in'
@@ -100,7 +88,7 @@ const Typewriter = function (srcElement, cfg) {
     }
     let op = self.processQueue.shift();
 
-    if (!self.config.hook(op)) {
+    if (!self.config.hook(op, self.processQueue)) {
       return;
     }
     if (op.type === 'Operation') {
