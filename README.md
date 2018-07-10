@@ -54,7 +54,7 @@ tw.resume(); // Currently it is just an alias of `tw.start`
 
 * Reset the animation
 ```js
-tw.reset();
+tw = tw.reset();
 ```
 
 ## License
