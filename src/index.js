@@ -124,6 +124,9 @@ const Typewriter = function (srcElement, cfg) {
     clearInterval(timeIntervalHandler);
   };
   self.resume = self.start;
+  self.reset = function() {
+    self = new Typewriter(newElement, self.config);
+  }
 };
 
 export default Typewriter;

@@ -22,17 +22,17 @@ var Typewriter = require('twjs');
 ## Usage
 * Initiation
 ```js
-var config = {
-  interval: 30,                       // * Time interval for the animation, 30 by
-                                      // default
+const config = {
+  interval: 30,                       // * Time interval for the animation, 30
+                                      // milliseconds by default
   skip: '.MathJax',                   // * Specify a selector to skip. We let 
                                       // the formulas shows entirely
-                                      // invalid when skipMathJax is false
   hook: function(operation, queue) {  // * For advanced usage of the library;
     return true;                      // return false to skip default process of
   }                                   // current operation
 };
-var tw = new Typewriter(document.getElementById('element-to-animate'), config);
+const targetElement = document.getElementById('element-to-animate')
+const tw = new Typewriter(targetElement, config);
 ```
 
 * Start the animation
@@ -47,7 +47,12 @@ tw.pause();
 
 * Resume the animation
 ```js
-tw.resume();
+tw.resume(); // Currently it is just an alias of `tw.start`
+```
+
+* Reset the animation
+```js
+tw.reset();
 ```
 
 ## License
