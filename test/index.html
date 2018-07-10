@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    </style>
+  </head>
+  <body>
+    <pre><a href="#" id="init">/* 1 */ tw = new Typewriter(document.getElementById('test'));</a>
+<a href="#" id="init-skip-maths">/* 2 */ tw = new Typewriter(document.getElementById('test'), {
+    skip: '.MathJax',
+    hook: function(x, queue) {
+      if(x.type === 'Node' && x.nodeType === 1 && x.data.matches('.MathJax_Preview')) {
+        for(var i = 0; i < 10; i += 1) {
+          queue.push({
+            type: 'Wait',
+            data: null
+          });
+        }
+      }
+      return true;
+    }
+  });</a>
+<a href="#" id="start">tw.start();</a>
+<a href="#" id="pause">tw.pause();</a>
+<a href="#" id="resume">tw.resume();</a>
+<a href="#" id="reset">tw = tw.reset();</a>
+</pre>
+
+    <div id="test">
+      <p>Let $x=a$, and $y=b$</p>
+      <h1>
+        Test
+      </h1>
+      <p>When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are
+        $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$</p>
+      <ul>
+        <li>When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are
+          $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$</li>
+        <li>When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are. </li>
+        <li>When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are. </li>
+      </ul>
+
+      <hr/>
+      <p>
+        \[  \begin{aligned}
+        \nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} &amp; = \frac{4\pi}{c}\vec{\mathbf{j}} \\   \nabla \cdot \vec{\mathbf{E}} &amp; = 4 \pi \rho \\
+        \nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t} &amp; = \vec{\mathbf{0}} \\
+        \nabla \cdot \vec{\mathbf{B}} &amp; = 0 \end{aligned}
+        \]
+      </p>
+    </div>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+      }); </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="./../lib/twjs.js"></script>
+    <script src="./scripts.js"></script>
+  </body>
+</html>

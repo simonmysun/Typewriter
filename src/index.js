@@ -1,4 +1,4 @@
-const Typewriter = function (srcElement, cfg) {
+const Typewriter = function (srcElement, cfg = {}) {
   const self = this;
   let timeIntervalHandler = null;
   const defaultConfig = {
@@ -85,6 +85,7 @@ const Typewriter = function (srcElement, cfg) {
   const process = function () {
     if (self.processQueue.length === 0) {
       self.pause();
+      return;
     }
     let op = self.processQueue.shift();
 
@@ -118,15 +119,22 @@ const Typewriter = function (srcElement, cfg) {
   };
 
   self.start = function () {
-    timeIntervalHandler = setInterval(process, self.config.interval);
+    if (timeIntervalHandler === null) {
+      timeIntervalHandler = setInterval(process, self.config.interval);
+    }
   };
   self.pause = function () {
     clearInterval(timeIntervalHandler);
+    timeIntervalHandler = null;
   };
   self.resume = self.start;
-  self.reset = function() {
-    self = new Typewriter(newElement, self.config);
-  }
+  self.reset = function () {
+    self.pause();
+    while (self.processQueue.length > 0) {
+      process();
+    }
+    return new Typewriter(newElement, Object.assign({}, self.config));
+  };
 };
 
 export default Typewriter;

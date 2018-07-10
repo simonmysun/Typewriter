@@ -35,6 +35,8 @@ const targetElement = document.getElementById('element-to-animate')
 const tw = new Typewriter(targetElement, config);
 ```
 
+`config` is optional. 
+
 * Start the animation
 ```js
 tw.start();
