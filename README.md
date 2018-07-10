@@ -57,7 +57,7 @@ tw.resume(); // Currently it is just an alias of `tw.start`
 tw = tw.reset();
 ```
 
-Example usage can be found [here](test/)
+Example usage can be found [here](test/). 
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
