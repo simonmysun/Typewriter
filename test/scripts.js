@@ -27,7 +27,7 @@ document.getElementById('init').addEventListener('click', function(event) {
 document.getElementById('init-skip-maths').addEventListener('click', function(event) {
   tw = new Typewriter(document.getElementById('test'), {
     skip: '.MathJax',
-    hook: function(x, queue) {
+    hook: function(x, queue) { // Wait for a moment after a maths formula is shown
       if(x.type === 'Node' && x.nodeType === 1 && x.data.matches('.MathJax_Preview')) {
         for(var i = 0; i < 10; i += 1) {
           queue.push({

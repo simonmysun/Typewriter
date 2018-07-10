@@ -1,5 +1,5 @@
 # Typewriter
-A better typewritter effect. 
+A better typewritter effect. Texts and elements appear one by one. 
 
 ## Install
 * In-browser installization
@@ -31,8 +31,8 @@ const config = {
     return true;                      // return false to skip default process of
   }                                   // current operation
 };
-const targetElement = document.getElementById('element-to-animate')
-const tw = new Typewriter(targetElement, config);
+const targetElement = document.getElementById('element-to-animate');
+let tw = new Typewriter(targetElement, config);
 ```
 
 `config` is optional. 
@@ -56,6 +56,8 @@ tw.resume(); // Currently it is just an alias of `tw.start`
 ```js
 tw = tw.reset();
 ```
+
+Example usage can be found [here](test/)
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
