@@ -12,7 +12,7 @@ const Typewriter = function (srcElement, cfg = {}) {
   self.config = Object.assign(defaultConfig, cfg);
   self.processQueue = [];
 
-  const newElement = document.createElement('div');
+  const newElement = document.createElement(srcElement.nodeName);
 
   newElement.innerHTML = ' ';
 
@@ -31,8 +31,9 @@ const Typewriter = function (srcElement, cfg = {}) {
         data: travelNode.cloneNode(false)
       });
     }
-
-    if (travelNode.childNodes.length > 0 &&
+    if (travelNode.nodeName === 'SCRIPT') { // Skip scripts to avoid being called multiple times.
+      self.processQueue.pop();
+    } else if (travelNode.childNodes.length > 0 &&
         !travelNode.matches(self.config.skip)) {
       self.processQueue.push({
         type: 'Operation',
@@ -41,17 +42,13 @@ const Typewriter = function (srcElement, cfg = {}) {
       travelNode = travelNode.firstChild;
       continue;
     }
+
     if (travelNode.nextSibling !== null) {
       travelNode = travelNode.nextSibling;
       continue;
     }
 
-    self.processQueue.push({
-      type: 'Operation',
-      data: 'out'
-    });
-    travelNode = travelNode.parentNode;
-    while (travelNode.nextSibling === null) {
+    while (travelNode.nextSibling === null && !travelNode.isEqualNode(srcElement)) {
       self.processQueue.push({
         type: 'Operation',
         data: 'out'
@@ -65,7 +62,7 @@ const Typewriter = function (srcElement, cfg = {}) {
     travelNode = travelNode.nextSibling;
   }
 
-  srcElement.parentNode.insertBefore(newElement, srcElement.nextSibling);
+  srcElement.parentNode.insertBefore(newElement, srcElement);
   srcElement.parentNode.removeChild(srcElement);
 
   const animateText = function (srcNode) {
