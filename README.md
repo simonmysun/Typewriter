@@ -1,6 +1,8 @@
 # Typewriter
 A better typewritter effect. Texts and elements appear one by one. 
 
+Drag <a href="javascript:(function(e,s){e.src=s;e.onload=()=>{new Typewriter(document.body);};document.head.appendChild(e);})(document.createElement('script'),'https://cdn.rawgit.com/simonmysun/Typewriter/2daa9621/lib/twjs.min.js');//">this</a> to your bookmarks and try it on your favourate website. 
+
 ## Install
 * In-browser installization
 ```html
@@ -9,6 +11,10 @@ A better typewritter effect. Texts and elements appear one by one.
 * Install with yarn or npm
 ```
 npm install twjs
+```
+or
+```
+yarn add twjs
 ```
 Then, 
 ```js
@@ -26,7 +32,7 @@ const config = {
   interval: 30,                       // * Time interval for the animation, 30
                                       // milliseconds by default
   skip: '.MathJax',                   // * Specify a selector to skip. We let 
-                                      // the formulas shows entirely
+                                      // the formulas shows entirely here
   hook: function(operation, queue) {  // * For advanced usage of the library;
     return true;                      // return false to skip default process of
   }                                   // current operation
@@ -57,7 +63,7 @@ tw.resume(); // Currently it is just an alias of `tw.start`
 tw = tw.reset();
 ```
 
-Example usage can be found [here](test/). 
+An example usage can be found [here](test/). 
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
