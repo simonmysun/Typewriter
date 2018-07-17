@@ -1,7 +1,9 @@
 # Typewriter
 A better typewritter effect. Texts and elements appear one by one. 
 
-Drag <a href="javascript:(function(e,s){e.src=s;e.onload=()=>{new Typewriter(document.body).start();};document.head.appendChild(e);})(document.createElement('script'),'xhttps://cdn.rawgit.com/simonmysun/Typewriter/x/lib/twjs.min.js');//">this</a> to your bookmarks and try it on your favourate website. 
+Drag <a href="javascript:(function(e,s){e.src=s;e.onload=()=>{new Typewriter(document.body).start();};document.head.appendChild(e);})(document.createElement('script'),'https://cdn.rawgit.com/simonmysun/Typewriter/e5677367/lib/twjs.min.js');//">this</a> to your bookmarks, try it on your favourate website\* and wait for the magic.
+
+<small>\*:  Cross-origin policy may applies and leads to failure. </small>
 
 ## Install
 * In-browser installization
