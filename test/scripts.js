@@ -28,9 +28,9 @@ document.getElementById('init-skip-maths').addEventListener('click', function(ev
   tw = new Typewriter(document.getElementById('test'), {
     skip: '.MathJax',
     hook: function(x, queue) { // Wait for a moment after a maths formula is shown
-      if(x.type === 'Node' && x.nodeType === 1 && x.data.matches('.MathJax_Preview')) {
+      if(x.type === 'Node' && x.data.nodeType === 1 && x.data.matches('.MathJax')) {
         for(var i = 0; i < 10; i += 1) {
-          queue.push({
+          queue.unshift({
             type: 'Wait',
             data: null
           });
@@ -73,4 +73,3 @@ document.getElementById('reset').addEventListener('click', function(event) {
   event.preventDefault();
   return false;
 });
-
