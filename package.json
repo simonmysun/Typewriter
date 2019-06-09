@@ -13,7 +13,8 @@
     "url": "git@github.com:simonmysun/Typewriter.git"
   },
   "keywords": [
-    "typewriter"
+    "typewriter",
+    "effects"
   ],
   "author": "Maoyin Sun",
   "license": "MIT",
